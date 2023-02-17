@@ -1,0 +1,18 @@
+version: '2.1'
+
+services:
+  barber-shop-db:
+    image: mongo:5.0.0
+    container_name: barber-shop
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/data/db
+  barbershop-api:
+    container_name: barbershop-api
+    image: barbershop-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
